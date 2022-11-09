@@ -2,13 +2,30 @@
 }
 
 .dev-container {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  border-radius: 15px;
 }
 
 .profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
 }
 
 .dev-name {
+  color: #f86594;
 }
 
 .dev-intro {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
 }
