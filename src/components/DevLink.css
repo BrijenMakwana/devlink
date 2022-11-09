@@ -1,8 +1,33 @@
 .dev-link-container {
+  width: 250px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .link-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #f86594;
+  flex: 1;
+  border-radius: 5px;
+  padding: 5px 10px;
 }
 
 .link-title {
+  text-decoration: none;
+  color: #f86594;
+  font-weight: 600;
+  flex: 1;
+}
+
+.link-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.delete {
+  margin-left: 15px;
 }
