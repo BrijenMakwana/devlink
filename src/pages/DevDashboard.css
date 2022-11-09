@@ -29,3 +29,11 @@
   font-size: 18px;
   font-weight: 300;
 }
+
+.tech-stacks {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 400px;
+  justify-content: center;
+}

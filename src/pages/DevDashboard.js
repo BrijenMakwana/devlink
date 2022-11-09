@@ -10,7 +10,7 @@ export default function DevDashboard() {
       <div className="dev-container">
         {/* profile picture */}
         <img
-          src="https://images.unsplash.com/photo-1604004555489-723a93d6ce74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+          src="https://avatars.githubusercontent.com/u/96004700?v=4"
           className="profile-image"
           alt="profile"
         />
@@ -24,7 +24,13 @@ export default function DevDashboard() {
         </p>
 
         {/* dev tech stacks */}
-        <TechStack />
+        <div className="tech-stacks">
+          <TechStack />
+          <TechStack />
+          <TechStack />
+          <TechStack />
+          <TechStack />
+        </div>
 
         {/* dev links */}
         <DevLink />
