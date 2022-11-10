@@ -1,46 +1,51 @@
-import React from "react";
+import { useState } from "react";
 import DevLink from "../components/DevLink";
 import TechStack from "../components/TechStack";
 import SideBar from "../components/SideBar";
 import "./DevDashboard.css";
 
 export default function DevDashboard() {
+  const [profile, setProfile] = useState("");
+  const [name, setName] = useState("");
+  const [introduction, setIntroduction] = useState("");
+  const [techStacks, setTechStacks] = useState([]);
+  const [devLinks, setDevLinks] = useState([]);
+  const [linkTitle, setLinkTitle] = useState("");
+  const [link, setLink] = useState("");
+
   return (
     <div className="main-container">
-      <SideBar />
+      <SideBar
+        profile={profile}
+        setProfile={setProfile}
+        setName={setName}
+        name={name}
+        introduction={introduction}
+        setIntroduction={setIntroduction}
+        linkTitle={linkTitle}
+        setLinkTitle={setLinkTitle}
+        link={link}
+        setLink={setLink}
+      />
       {/* developer details */}
       <div className="dev-container">
         {/* profile picture */}
         <img
-          src="https://avatars.githubusercontent.com/u/96004700?v=4"
+          src={"https://avatars.githubusercontent.com/u/96004700?v=4"}
           className="profile-image"
           alt="profile"
         />
         {/* developer name */}
-        <h1 className="dev-name">Brijen Makwana</h1>
+        <h1 className="dev-name">{name}</h1>
 
         {/* developer intro */}
-        <p className="dev-intro">
-          I'm a Software Developer always looking to build cool projects and
-          work with awesome people!
-        </p>
+        <p className="dev-intro">{introduction}</p>
 
         {/* dev tech stacks */}
-        <div className="tech-stacks">
-          <TechStack />
-          <TechStack />
-          <TechStack />
-          <TechStack />
-          <TechStack />
-        </div>
+        <div className="tech-stacks"></div>
 
         {/* dev links */}
-        <div className="dev-links">
-          <DevLink />
-          <DevLink />
-          <DevLink />
-          <DevLink />
-        </div>
+        <div className="dev-links"></div>
       </div>
     </div>
   );

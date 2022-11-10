@@ -5,6 +5,7 @@
 
 .dev-container {
   width: 500px;
+  height: min-content;
   margin-left: auto;
   margin-right: auto;
   background-color: #fff;
@@ -24,6 +25,7 @@
 
 .dev-name {
   color: #f86594;
+  text-transform: capitalize;
 }
 
 .dev-intro {

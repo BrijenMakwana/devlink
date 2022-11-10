@@ -1,16 +1,40 @@
 import React from "react";
 import "./SideBar.css";
 
-export default function SideBar() {
+export default function SideBar(props) {
+  const {
+    profile,
+    setProfile,
+    name,
+    setName,
+    introduction,
+    setIntroduction,
+    linkTitle,
+    setLinkTitle,
+    link,
+    setLink,
+  } = props;
+
   return (
     <div className="sidebar-container">
       {/* general settings */}
       <h2 className="sidebar-heading">general</h2>
       {/* profile upload */}
-      <input type="file" className="input-file" />
+      <input
+        type="file"
+        className="input-file"
+        title="choose image"
+        onClick={(e) => setProfile(e.target.value)}
+      />
 
       {/* name */}
-      <input type="text" placeholder="name" className="input" />
+      <input
+        type="text"
+        placeholder="name"
+        className="input"
+        onChange={(e) => setName(e.target.value)}
+        value={name}
+      />
 
       {/* tel something about yourself */}
       <textarea
@@ -18,6 +42,8 @@ export default function SideBar() {
         cols="20"
         className="input"
         placeholder="tell something about yourself"
+        onChange={(e) => setIntroduction(e.target.value)}
+        value={introduction}
       ></textarea>
 
       {/* tech stacks */}
@@ -31,8 +57,20 @@ export default function SideBar() {
 
       {/* links */}
       <h2 className="sidebar-heading">links</h2>
-      <input type="text" placeholder="title" className="input" />
-      <input type="text" placeholder="link" className="input" />
+      <input
+        type="text"
+        placeholder="title"
+        className="input"
+        onChange={(e) => setLinkTitle(e.target.value)}
+        value={linkTitle}
+      />
+      <input
+        type="text"
+        placeholder="link"
+        className="input"
+        onChange={(e) => setLink(e.target.value)}
+        value={link}
+      />
 
       <div className="btn-container add">
         <span className="btn-text add-text">add</span>
