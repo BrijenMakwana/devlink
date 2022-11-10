@@ -1,7 +1,7 @@
 import React from "react";
 import "./DevLink.css";
 import icon from "../assets/images/github.png";
-import deleteIcon from "../assets/images/trash.png";
+import deleteIcon from "../assets/images/delete.png";
 
 export default function DevLink() {
   return (
