@@ -1,11 +1,13 @@
 import React from "react";
 import DevLink from "../components/DevLink";
 import TechStack from "../components/TechStack";
+import SideBar from "../components/SideBar";
 import "./DevDashboard.css";
 
 export default function DevDashboard() {
   return (
     <div className="main-container">
+      <SideBar />
       {/* developer details */}
       <div className="dev-container">
         {/* profile picture */}
