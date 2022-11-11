@@ -1,5 +1,5 @@
 .dev-link-container {
-  width: 250px;
+  width: 300px;
   margin-top: 10px;
   display: flex;
   flex-direction: row;
@@ -20,6 +20,7 @@
   text-decoration: none;
   color: #f86594;
   font-weight: 600;
+  text-transform: capitalize;
   flex: 1;
 }
 

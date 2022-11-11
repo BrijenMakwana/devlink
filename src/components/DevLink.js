@@ -12,7 +12,7 @@ export default function DevLink() {
           href="https://github.com/BrijenMakwana"
           target="blank"
         >
-          Github
+          portfolio
         </a>
         {/* link icon */}
         <img src={icon} alt="icon" className="link-icon" />

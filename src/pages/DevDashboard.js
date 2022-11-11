@@ -55,7 +55,11 @@ export default function DevDashboard() {
         </div>
 
         {/* dev links */}
-        <div className="dev-links"></div>
+        <div className="dev-links">
+          <DevLink />
+          <DevLink />
+          <DevLink />
+        </div>
       </div>
     </div>
   );
