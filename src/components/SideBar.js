@@ -9,11 +9,21 @@ export default function SideBar(props) {
     setName,
     introduction,
     setIntroduction,
+    techStackString,
+    setTechStackString,
+    techStacks,
+    setTechStacks,
     linkTitle,
     setLinkTitle,
     link,
     setLink,
   } = props;
+
+  const splitTechStack = (e) => {
+    if (e.charCode === 44) {
+      setTechStacks(techStackString.split(","));
+    }
+  };
 
   return (
     <div className="sidebar-container">
@@ -53,6 +63,9 @@ export default function SideBar(props) {
         cols="20"
         className="input"
         placeholder="write down all the technoligies that you work on saperated by comma"
+        onChange={(e) => setTechStackString(e.target.value)}
+        onKeyPress={splitTechStack}
+        value={techStackString}
       ></textarea>
 
       {/* links */}

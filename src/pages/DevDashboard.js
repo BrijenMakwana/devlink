@@ -8,6 +8,7 @@ export default function DevDashboard() {
   const [profile, setProfile] = useState("");
   const [name, setName] = useState("");
   const [introduction, setIntroduction] = useState("");
+  const [techStackString, setTechStackString] = useState("");
   const [techStacks, setTechStacks] = useState([]);
   const [devLinks, setDevLinks] = useState([]);
   const [linkTitle, setLinkTitle] = useState("");
@@ -22,6 +23,10 @@ export default function DevDashboard() {
         name={name}
         introduction={introduction}
         setIntroduction={setIntroduction}
+        techStackString={techStackString}
+        setTechStackString={setTechStackString}
+        techStacks={techStacks}
+        setTechStacks={setTechStacks}
         linkTitle={linkTitle}
         setLinkTitle={setLinkTitle}
         link={link}
@@ -42,7 +47,12 @@ export default function DevDashboard() {
         <p className="dev-intro">{introduction}</p>
 
         {/* dev tech stacks */}
-        <div className="tech-stacks"></div>
+        <div className="tech-stacks">
+          {techStacks &&
+            techStacks.map((item, index) => (
+              <TechStack title={item} key={index} />
+            ))}
+        </div>
 
         {/* dev links */}
         <div className="dev-links"></div>
