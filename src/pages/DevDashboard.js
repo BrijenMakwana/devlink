@@ -31,6 +31,8 @@ export default function DevDashboard() {
         setLinkTitle={setLinkTitle}
         link={link}
         setLink={setLink}
+        devLinks={devLinks}
+        setDevLinks={setDevLinks}
       />
       {/* developer details */}
       <div className="dev-container">
@@ -56,9 +58,10 @@ export default function DevDashboard() {
 
         {/* dev links */}
         <div className="dev-links">
-          <DevLink />
-          <DevLink />
-          <DevLink />
+          {devLinks &&
+            devLinks.map((item, index) => (
+              <DevLink title={item.title} link={item.link} key={index} />
+            ))}
         </div>
       </div>
     </div>

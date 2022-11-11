@@ -18,6 +18,8 @@ export default function SideBar(props) {
     setLinkTitle,
     link,
     setLink,
+    devLinks,
+    setDevLinks,
   } = props;
 
   const splitTechStack = (e) => {
@@ -32,11 +34,24 @@ export default function SideBar(props) {
         name: name,
         introduction: introduction,
         techStacks: techStacks,
+        devLinks: devLinks,
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+  };
+
+  const addDevLink = () => {
+    setDevLinks([
+      ...devLinks,
+      {
+        title: linkTitle,
+        link: link,
+      },
+    ]);
+    setLinkTitle("");
+    setLink("");
   };
 
   return (
@@ -99,7 +114,7 @@ export default function SideBar(props) {
         value={link}
       />
 
-      <div className="btn-container add">
+      <div className="btn-container add" onClick={addDevLink}>
         <span className="btn-text add-text">add</span>
       </div>
 
