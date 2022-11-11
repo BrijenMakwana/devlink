@@ -1,5 +1,6 @@
 import React from "react";
 import "./SideBar.css";
+import { app, db, collection, addDoc } from "../firebase/index";
 
 export default function SideBar(props) {
   const {
@@ -22,6 +23,19 @@ export default function SideBar(props) {
   const splitTechStack = (e) => {
     if (e.charCode === 44) {
       setTechStacks(techStackString.split(","));
+    }
+  };
+
+  const publishData = async () => {
+    try {
+      const docRef = await addDoc(collection(db, "brijenma@gmail.com"), {
+        name: name,
+        introduction: introduction,
+        techStacks: techStacks,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
     }
   };
 
@@ -89,7 +103,7 @@ export default function SideBar(props) {
         <span className="btn-text add-text">add</span>
       </div>
 
-      <div className="btn-container publish">
+      <div className="btn-container publish" onClick={publishData}>
         <span className="btn-text publish-text">publish</span>
       </div>
     </div>
