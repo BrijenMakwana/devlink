@@ -1,9 +1,20 @@
+import { useEffect } from "react";
 import "./DevLink.css";
 
 import deleteIcon from "../assets/images/delete.png";
 
 export default function DevLink(props) {
   const { title, link, removeDevLink, id } = props;
+
+  const linkIcon =
+    title === "facebook" ||
+    title === "github" ||
+    title === "instagram" ||
+    title === "linkedin" ||
+    title === "twitter" ||
+    title === "youtube"
+      ? title
+      : "link";
 
   // todo: for others link, set link icon
   return (
@@ -14,7 +25,7 @@ export default function DevLink(props) {
         </a>
         {/* link icon */}
         <img
-          src={require(`../assets/images/${title}.png`)}
+          src={require(`../assets/images/${linkIcon}.png`)}
           alt="icon"
           className="link-icon"
         />
