@@ -4,7 +4,7 @@ import "./DevLink.css";
 import deleteIcon from "../assets/images/delete.png";
 
 export default function DevLink(props) {
-  const { title, link, removeDevLink, id } = props;
+  const { title, link, removeDevLink = undefined, id, isRemovable } = props;
 
   const linkIcon =
     title === "facebook" ||
@@ -31,12 +31,14 @@ export default function DevLink(props) {
         />
       </div>
       {/* delete icon */}
-      <img
-        src={deleteIcon}
-        alt="icon"
-        className="link-icon delete"
-        onClick={() => removeDevLink(id)}
-      />
+      {isRemovable && (
+        <img
+          src={deleteIcon}
+          alt="icon"
+          className="link-icon delete"
+          onClick={() => removeDevLink(id)}
+        />
+      )}
     </div>
   );
 }

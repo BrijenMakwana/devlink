@@ -1,24 +1,15 @@
 import { useState, useEffect } from "react";
 import DevLink from "../components/DevLink";
 import TechStack from "../components/TechStack";
-import SideBar from "../components/SideBar";
 import "./DevDashboard.css";
 import { db, doc, getDoc } from "../firebase/index";
 
-export default function DevDashboard() {
-  const [userData, setUserData] = useState({});
+export default function DevLinkProfile() {
   const [profile, setProfile] = useState("");
   const [name, setName] = useState("");
   const [introduction, setIntroduction] = useState();
-  const [techStackString, setTechStackString] = useState("");
   const [techStacks, setTechStacks] = useState([]);
   const [devLinks, setDevLinks] = useState([]);
-  const [linkTitle, setLinkTitle] = useState("");
-  const [link, setLink] = useState("");
-
-  const removeDevLink = (deletedLinkId) => {
-    setDevLinks(devLinks.filter((link) => link.id !== deletedLinkId));
-  };
 
   useEffect(() => {
     getUserData();
@@ -32,7 +23,6 @@ export default function DevDashboard() {
     if (docSnap.exists()) {
       setName(docSnap.data().name);
       setIntroduction(docSnap.data().introduction);
-      setTechStackString(docSnap.data().techStacks.toString());
       setTechStacks(docSnap.data().techStacks);
       setDevLinks(docSnap.data().devLinks);
     } else {
@@ -43,24 +33,6 @@ export default function DevDashboard() {
 
   return (
     <div className="main-container">
-      <SideBar
-        profile={profile}
-        setProfile={setProfile}
-        setName={setName}
-        name={name}
-        introduction={introduction}
-        setIntroduction={setIntroduction}
-        techStackString={techStackString}
-        setTechStackString={setTechStackString}
-        techStacks={techStacks}
-        setTechStacks={setTechStacks}
-        linkTitle={linkTitle}
-        setLinkTitle={setLinkTitle}
-        link={link}
-        setLink={setLink}
-        devLinks={devLinks}
-        setDevLinks={setDevLinks}
-      />
       {/* developer details */}
       <div className="dev-container">
         {/* profile picture */}
@@ -91,9 +63,8 @@ export default function DevDashboard() {
                 title={item.title}
                 link={item.link}
                 key={index}
-                removeDevLink={removeDevLink}
                 id={item.id}
-                isRemovable={true}
+                isRemovable={false}
               />
             ))}
         </div>
