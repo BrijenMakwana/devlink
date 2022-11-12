@@ -1,10 +1,11 @@
-import React from "react";
 import "./DevLink.css";
-import icon from "../assets/images/github.png";
+
 import deleteIcon from "../assets/images/delete.png";
 
 export default function DevLink(props) {
   const { title, link, removeDevLink, id } = props;
+
+  // todo: for others link, set link icon
   return (
     <div className="dev-link-container">
       <div className="link-container">
@@ -12,7 +13,11 @@ export default function DevLink(props) {
           {title}
         </a>
         {/* link icon */}
-        <img src={icon} alt="icon" className="link-icon" />
+        <img
+          src={require(`../assets/images/${title}.png`)}
+          alt="icon"
+          className="link-icon"
+        />
       </div>
       {/* delete icon */}
       <img
