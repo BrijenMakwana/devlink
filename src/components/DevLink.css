@@ -17,6 +17,7 @@
 }
 
 .link-title {
+  font-size: 18px;
   text-decoration: none;
   color: #f86594;
   font-weight: 600;
@@ -35,4 +36,15 @@
 
 .delete {
   margin-left: 15px;
+}
+
+@media screen and (max-width: 500px) {
+  .dev-link-container {
+    width: 250px;
+  }
+
+  .link-icon {
+    width: 20px;
+    height: 20px;
+  }
 }

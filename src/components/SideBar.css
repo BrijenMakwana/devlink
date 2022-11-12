@@ -11,6 +11,11 @@
 .sidebar-heading {
   text-transform: capitalize;
   font-size: 20px;
+  margin-top: 10px;
+}
+
+.input-file {
+  margin-top: 15px;
 }
 
 .input {
@@ -37,7 +42,7 @@
 
 .text-area-input {
   resize: none;
-  height: 80px;
+  height: 100px;
 }
 
 .btn-container {
@@ -73,4 +78,14 @@
 
 .publish-text {
   color: #000;
+}
+
+@media screen and (max-width: 500px) {
+  .sidebar-container {
+    order: 2;
+    margin-top: 20px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

@@ -26,12 +26,15 @@
 .dev-name {
   color: #f86594;
   text-transform: capitalize;
+  margin-top: 15px;
 }
 
 .dev-intro {
   text-align: center;
   font-size: 18px;
   font-weight: 300;
+  margin-top: 15px;
+  padding: 0 15px;
 }
 
 .tech-stacks {
@@ -40,10 +43,35 @@
   flex-wrap: wrap;
   width: 400px;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .dev-links {
   margin-top: 20px;
+}
 
-  /* width: 400px; */
+@media screen and (max-width: 500px) {
+  .main-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dev-container {
+    order: 1;
+    width: 300px;
+    margin-top: 50px;
+  }
+
+  .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .dev-name {
+    font-size: 20px;
+  }
+
+  .tech-stacks {
+    width: 250px;
+  }
 }
