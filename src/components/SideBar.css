@@ -2,9 +2,10 @@
   background-color: #fff;
   margin-top: 50px;
   width: 250px;
+  height: min-content;
   margin-left: 20px;
   border-radius: 15px;
-  padding: 10px 20px;
+  padding: 20px;
 }
 
 .sidebar-heading {
