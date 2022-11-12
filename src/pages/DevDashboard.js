@@ -14,6 +14,10 @@ export default function DevDashboard() {
   const [linkTitle, setLinkTitle] = useState("");
   const [link, setLink] = useState("");
 
+  const removeDevLink = (deletedLinkId) => {
+    setDevLinks(devLinks.filter((link) => link.id !== deletedLinkId));
+  };
+
   return (
     <div className="main-container">
       <SideBar
@@ -60,7 +64,13 @@ export default function DevDashboard() {
         <div className="dev-links">
           {devLinks &&
             devLinks.map((item, index) => (
-              <DevLink title={item.title} link={item.link} key={index} />
+              <DevLink
+                title={item.title}
+                link={item.link}
+                key={index}
+                removeDevLink={removeDevLink}
+                id={item.id}
+              />
             ))}
         </div>
       </div>

@@ -29,6 +29,10 @@
   height: 25px;
 }
 
+.link-icon:hover {
+  cursor: pointer;
+}
+
 .delete {
   margin-left: 15px;
 }

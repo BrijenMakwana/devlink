@@ -46,6 +46,7 @@ export default function SideBar(props) {
     setDevLinks([
       ...devLinks,
       {
+        id: devLinks.length === 0 ? 0 : devLinks[devLinks.length - 1].id + 1,
         title: linkTitle,
         link: link,
       },
