@@ -1,6 +1,6 @@
 import React from "react";
 import "./SideBar.css";
-import { app, db, collection, addDoc } from "../firebase/index";
+import { app, db, collection, addDoc, doc, setDoc } from "../firebase/index";
 
 export default function SideBar(props) {
   const {
@@ -30,12 +30,15 @@ export default function SideBar(props) {
 
   const publishData = async () => {
     try {
-      const docRef = await addDoc(collection(db, "brijenma@gmail.com"), {
-        name: name,
-        introduction: introduction,
-        techStacks: techStacks,
-        devLinks: devLinks,
-      });
+      const docRef = setDoc(
+        doc(db, "brijenma@gmail.com", "brijenma@gmail.com_devlink"),
+        {
+          name: name,
+          introduction: introduction,
+          techStacks: techStacks,
+          devLinks: devLinks,
+        }
+      );
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
