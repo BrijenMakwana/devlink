@@ -3,6 +3,7 @@ import DevLink from "../components/DevLink";
 import TechStack from "../components/TechStack";
 import "./DevDashboard.css";
 import { db, doc, getDoc } from "../firebase/index";
+import { useParams } from "react-router-dom";
 
 export default function DevLinkProfile() {
   const [profile, setProfile] = useState("");
@@ -10,6 +11,7 @@ export default function DevLinkProfile() {
   const [introduction, setIntroduction] = useState();
   const [techStacks, setTechStacks] = useState([]);
   const [devLinks, setDevLinks] = useState([]);
+  const params = useParams();
 
   useEffect(() => {
     getUserData();
@@ -17,7 +19,7 @@ export default function DevLinkProfile() {
 
   // get user data
   const getUserData = async () => {
-    const docRef = doc(db, "brijenma@gmail.com", "brijenma@gmail.com_devlink");
+    const docRef = doc(db, params?.emailId, `${params?.emailId}_devlink`);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
