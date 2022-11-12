@@ -96,7 +96,7 @@ export default function SideBar(props) {
       <textarea
         rows="2"
         cols="20"
-        className="input"
+        className="input text-area-input"
         placeholder="tell something about yourself"
         onChange={(e) => setIntroduction(e.target.value)}
         value={introduction}
@@ -107,8 +107,8 @@ export default function SideBar(props) {
       <textarea
         rows="4"
         cols="20"
-        className="input"
-        placeholder="write down all the technoligies that you work on saperated by comma"
+        className="input text-area-input"
+        placeholder="e.g. react native, react, HTML, Javascript, ..."
         onChange={(e) => setTechStackString(e.target.value)}
         onKeyPress={splitTechStack}
         value={techStackString}

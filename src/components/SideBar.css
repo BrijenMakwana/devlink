@@ -35,6 +35,11 @@
   outline: none !important;
 }
 
+.text-area-input {
+  resize: none;
+  height: 80px;
+}
+
 .btn-container {
   text-align: center;
   padding: 10px;
