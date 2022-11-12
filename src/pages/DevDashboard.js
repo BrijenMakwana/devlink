@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DevLink from "../components/DevLink";
 import TechStack from "../components/TechStack";
 import SideBar from "../components/SideBar";
 import "./DevDashboard.css";
+import { db, doc, getDoc } from "../firebase/index";
 
 export default function DevDashboard() {
+  const [userData, setUserData] = useState({});
   const [profile, setProfile] = useState("");
   const [name, setName] = useState("");
-  const [introduction, setIntroduction] = useState("");
+  const [introduction, setIntroduction] = useState();
   const [techStackString, setTechStackString] = useState("");
   const [techStacks, setTechStacks] = useState([]);
   const [devLinks, setDevLinks] = useState([]);
@@ -16,6 +18,27 @@ export default function DevDashboard() {
 
   const removeDevLink = (deletedLinkId) => {
     setDevLinks(devLinks.filter((link) => link.id !== deletedLinkId));
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
+  // get user data
+  const getUserData = async () => {
+    const docRef = doc(db, "brijenma@gmail.com", "brijenma@gmail.com_devlink");
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      setName(docSnap.data().name);
+      setIntroduction(docSnap.data().introduction);
+      setTechStackString(docSnap.data().techStacks.toString());
+      setTechStacks(docSnap.data().techStacks);
+      setDevLinks(docSnap.data().devLinks);
+    } else {
+      // doc.data() will be undefined in this case
+      alert("No such document!");
+    }
   };
 
   return (
