@@ -29,33 +29,46 @@ export default function SideBar(props) {
   };
 
   const publishData = async () => {
-    try {
-      const docRef = setDoc(
-        doc(db, "brijenma@gmail.com", "brijenma@gmail.com_devlink"),
-        {
-          name: name,
-          introduction: introduction,
-          techStacks: techStacks,
-          devLinks: devLinks,
-        }
-      );
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
+    if (
+      name === "" ||
+      introduction === "" ||
+      techStackString === "" ||
+      devLinks.length === 0
+    ) {
+      alert("please fill in all the fields");
+    } else {
+      try {
+        const docRef = setDoc(
+          doc(db, "brijenma@gmail.com", "brijenma@gmail.com_devlink"),
+          {
+            name: name,
+            introduction: introduction,
+            techStacks: techStacks,
+            devLinks: devLinks,
+          }
+        );
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
     }
   };
 
   const addDevLink = () => {
-    setDevLinks([
-      ...devLinks,
-      {
-        id: devLinks.length === 0 ? 0 : devLinks[devLinks.length - 1].id + 1,
-        title: linkTitle,
-        link: link,
-      },
-    ]);
-    setLinkTitle("");
-    setLink("");
+    if (linkTitle === "" || link === "") {
+      alert("please fill in all the fields");
+    } else {
+      setDevLinks([
+        ...devLinks,
+        {
+          id: devLinks.length === 0 ? 0 : devLinks[devLinks.length - 1].id + 1,
+          title: linkTitle,
+          link: link,
+        },
+      ]);
+      setLinkTitle("");
+      setLink("");
+    }
   };
 
   return (
