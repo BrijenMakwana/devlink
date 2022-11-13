@@ -3,7 +3,7 @@ import DevLink from "../components/DevLink";
 import TechStack from "../components/TechStack";
 import SideBar from "../components/SideBar";
 import "./DevDashboard.css";
-import { db, doc, getDoc } from "../firebase/index";
+import { db, doc, getDoc, auth } from "../firebase/index";
 import { useParams } from "react-router-dom";
 
 export default function DevDashboard() {
@@ -31,37 +31,44 @@ export default function DevDashboard() {
 
   // get user data
   const getUserData = async () => {
-    const docRef = doc(db, userEmail, `${userEmail}_devlink`);
-    const docSnap = await getDoc(docRef);
+    const user = auth.currentUser;
+    if (user.email === params.emailId) {
+      const docRef = doc(db, userEmail, `${userEmail}_devlink`);
+      const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-      setName(docSnap.data().name);
-      setIntroduction(docSnap.data().introduction);
-      setTechStackString(docSnap.data().techStacks.toString());
-      setTechStacks(docSnap.data().techStacks);
-      setDevLinks(docSnap.data().devLinks);
+      if (docSnap.exists()) {
+        setName(docSnap.data().name);
+        setIntroduction(docSnap.data().introduction);
+        setTechStackString(docSnap.data().techStacks.toString());
+        setTechStacks(docSnap.data().techStacks);
+        setDevLinks(docSnap.data().devLinks);
+      }
+    } else {
     }
   };
 
   return (
     <div className="main-container">
-      <SideBar
-        userEmail={userEmail}
-        setName={setName}
-        name={name}
-        introduction={introduction}
-        setIntroduction={setIntroduction}
-        techStackString={techStackString}
-        setTechStackString={setTechStackString}
-        techStacks={techStacks}
-        setTechStacks={setTechStacks}
-        linkTitle={linkTitle}
-        setLinkTitle={setLinkTitle}
-        link={link}
-        setLink={setLink}
-        devLinks={devLinks}
-        setDevLinks={setDevLinks}
-      />
+      {auth.currentUser.email === params.emailId && (
+        <SideBar
+          userEmail={userEmail}
+          setName={setName}
+          name={name}
+          introduction={introduction}
+          setIntroduction={setIntroduction}
+          techStackString={techStackString}
+          setTechStackString={setTechStackString}
+          techStacks={techStacks}
+          setTechStacks={setTechStacks}
+          linkTitle={linkTitle}
+          setLinkTitle={setLinkTitle}
+          link={link}
+          setLink={setLink}
+          devLinks={devLinks}
+          setDevLinks={setDevLinks}
+        />
+      )}
+
       {/* developer details */}
       <div className="dev-container">
         {/* profile picture */}

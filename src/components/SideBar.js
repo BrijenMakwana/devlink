@@ -1,8 +1,19 @@
 import React from "react";
 import "./SideBar.css";
-import { db, doc, setDoc, storage, ref, uploadBytes } from "../firebase/index";
+import {
+  db,
+  doc,
+  setDoc,
+  storage,
+  ref,
+  uploadBytes,
+  auth,
+} from "../firebase/index";
+import { useParams } from "react-router-dom";
 
 export default function SideBar(props) {
+  const params = useParams();
+
   const {
     userEmail,
     name,
@@ -29,6 +40,11 @@ export default function SideBar(props) {
 
   // publish data to firebase
   const publishData = async () => {
+    const user = auth.currentUser;
+    if (user.email !== params.emailId) {
+      alert("something went wrong!! please try login again");
+      return;
+    }
     if (
       name === "" ||
       introduction === "" ||

@@ -31,12 +31,13 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="edit/:emailId" element={<DevDashboard />} />
             <Route path=":emailId" element={<DevLinkProfile />} />
+            <Route path="*" element={<NothingPage />} />
           </>
         ) : (
           <>
             <Route path="/" element={<HomePage />} />
-            <Route path="edit/:emailId" element={<NothingPage />} />
-            <Route path="edit" element={<NothingPage />} />
+            {/* <Route path="edit/:emailId" element={<NothingPage />} />
+            <Route path="edit" element={<NothingPage />} /> */}
             <Route path=":emailId" element={<DevLinkProfile />} />
             <Route path="*" element={<NothingPage />} />
           </>
