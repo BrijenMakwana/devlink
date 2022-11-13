@@ -8,6 +8,12 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
+import {
+  getAuth,
+  GithubAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBx869m25jIjK4KpMPLawY6Z3rnHQL4bE4",
@@ -22,7 +28,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
-const storageRef = ref(storage);
+const auth = getAuth(app);
+const provider = new GithubAuthProvider();
 
 export {
   app,
@@ -35,4 +42,9 @@ export {
   storage,
   ref,
   uploadBytes,
+  provider,
+  GithubAuthProvider,
+  auth,
+  signInWithPopup,
+  onAuthStateChanged,
 };

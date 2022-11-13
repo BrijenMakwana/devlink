@@ -3,14 +3,44 @@ import DevDashboard from "./pages/DevDashboard";
 import DevLinkProfile from "./pages/DevLinkProfile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import { auth, onAuthStateChanged } from "./firebase/index";
+import React, { useEffect, useState } from "react";
+import NothingPage from "./pages/NothingPage";
 
 function App() {
+  const [isAllow, setIsAllow] = useState(false);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        setIsAllow(true);
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="edit/:emailId" element={<DevDashboard />} />
-        <Route path="/:emailId" element={<DevLinkProfile />} />
+        {isAllow ? (
+          <>
+            <Route path="/" element={<HomePage />} />
+            <Route path="edit/:emailId" element={<DevDashboard />} />
+            <Route path=":emailId" element={<DevLinkProfile />} />
+          </>
+        ) : (
+          <>
+            <Route path="/" element={<HomePage />} />
+            <Route path="edit/:emailId" element={<NothingPage />} />
+            <Route path="edit" element={<NothingPage />} />
+            <Route path=":emailId" element={<DevLinkProfile />} />
+            <Route path="*" element={<NothingPage />} />
+          </>
+        )}
       </Routes>
     </BrowserRouter>
   );

@@ -43,6 +43,10 @@ body {
   align-items: center;
 }
 
+.email-btn-container:hover {
+  cursor: pointer;
+}
+
 .email-btn-text {
   color: #fff;
   font-size: 18px;

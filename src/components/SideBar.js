@@ -4,8 +4,7 @@ import { db, doc, setDoc, storage, ref, uploadBytes } from "../firebase/index";
 
 export default function SideBar(props) {
   const {
-    profile,
-    setProfile,
+    userEmail,
     name,
     setName,
     introduction,
@@ -39,16 +38,14 @@ export default function SideBar(props) {
       alert("please fill in all the fields");
     } else {
       try {
-        const docRef = setDoc(
-          doc(db, "brijenma@gmail.com", "brijenma@gmail.com_devlink"),
-          {
-            name: name,
-            introduction: introduction,
-            techStacks: techStacks,
-            devLinks: devLinks,
-          }
-        );
+        const docRef = setDoc(doc(db, userEmail, `${userEmail}_devlink`), {
+          name: name,
+          introduction: introduction,
+          techStacks: techStacks,
+          devLinks: devLinks,
+        });
         console.log("Document written with ID: ", docRef.id);
+        alert(`Your profile URL is: http://localhost:3000/${userEmail}`);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
@@ -74,12 +71,11 @@ export default function SideBar(props) {
   };
 
   // upload profile image to firebase storage
-  const uploadProfileImage = (e) => {
-    setProfile(e.target.files[0]);
-    const imageRef = ref(storage, "brijenma@gmail.com_devlink");
+  const uploadProfileImage = async (e) => {
+    const imageRef = ref(storage, `${userEmail}_devlink`);
 
     // 'file' comes from the Blob or File API
-    uploadBytes(imageRef, profile).then((snapshot) => {
+    uploadBytes(imageRef, e.target.files[0]).then((snapshot) => {
       console.log("Uploaded a blob or file!");
     });
   };

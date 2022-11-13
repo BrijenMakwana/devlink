@@ -4,9 +4,9 @@ import TechStack from "../components/TechStack";
 import SideBar from "../components/SideBar";
 import "./DevDashboard.css";
 import { db, doc, getDoc } from "../firebase/index";
+import { useParams } from "react-router-dom";
 
 export default function DevDashboard() {
-  const [profile, setProfile] = useState("");
   const [name, setName] = useState("");
   const [introduction, setIntroduction] = useState("");
   const [techStackString, setTechStackString] = useState("");
@@ -14,7 +14,12 @@ export default function DevDashboard() {
   const [devLinks, setDevLinks] = useState([]);
   const [linkTitle, setLinkTitle] = useState("");
   const [link, setLink] = useState("");
-  const [userEmail, setUserEmail] = useState("brijenmam@gmail.com");
+
+  const params = useParams();
+  const [userEmail, setUserEmail] = useState(params.emailId);
+  const [profileURL, setProfileURL] = useState(
+    `https://firebasestorage.googleapis.com/v0/b/devlink-35e6e.appspot.com/o/${userEmail}_devlink?alt=media&token=963a9020-1690-4432-94c7-ac9e8838f235`
+  );
 
   const removeDevLink = (deletedLinkId) => {
     setDevLinks(devLinks.filter((link) => link.id !== deletedLinkId));
@@ -26,7 +31,7 @@ export default function DevDashboard() {
 
   // get user data
   const getUserData = async () => {
-    const docRef = doc(db, "brijenma@gmail.com", "brijenma@gmail.com_devlink");
+    const docRef = doc(db, userEmail, `${userEmail}_devlink`);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -35,17 +40,13 @@ export default function DevDashboard() {
       setTechStackString(docSnap.data().techStacks.toString());
       setTechStacks(docSnap.data().techStacks);
       setDevLinks(docSnap.data().devLinks);
-    } else {
-      // doc.data() will be undefined in this case
-      alert("No such document!");
     }
   };
 
   return (
     <div className="main-container">
       <SideBar
-        profile={profile}
-        setProfile={setProfile}
+        userEmail={userEmail}
         setName={setName}
         name={name}
         introduction={introduction}
@@ -64,11 +65,9 @@ export default function DevDashboard() {
       {/* developer details */}
       <div className="dev-container">
         {/* profile picture */}
-        <img
-          src={`https://firebasestorage.googleapis.com/v0/b/devlink-35e6e.appspot.com/o/${userEmail}_devlink?alt=media&token=963a9020-1690-4432-94c7-ac9e8838f235`}
-          className="profile-image"
-          alt="profile"
-        />
+
+        <img src={profileURL} className="profile-image" alt="profile" />
+
         {/* developer name */}
         <h1 className="dev-name">{name}</h1>
 

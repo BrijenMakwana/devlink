@@ -3,15 +3,15 @@ import DevLink from "../components/DevLink";
 import TechStack from "../components/TechStack";
 import "./DevDashboard.css";
 import { db, doc, getDoc } from "../firebase/index";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function DevLinkProfile() {
-  const [profile, setProfile] = useState("");
   const [name, setName] = useState("");
   const [introduction, setIntroduction] = useState();
   const [techStacks, setTechStacks] = useState([]);
   const [devLinks, setDevLinks] = useState([]);
   const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getUserData();
@@ -29,7 +29,7 @@ export default function DevLinkProfile() {
       setDevLinks(docSnap.data().devLinks);
     } else {
       // doc.data() will be undefined in this case
-      alert("No such document!");
+      navigate("/");
     }
   };
 
@@ -39,7 +39,7 @@ export default function DevLinkProfile() {
       <div className="dev-container">
         {/* profile picture */}
         <img
-          src={"https://avatars.githubusercontent.com/u/96004700?v=4"}
+          src={`https://firebasestorage.googleapis.com/v0/b/devlink-35e6e.appspot.com/o/${params?.emailId}_devlink?alt=media&token=963a9020-1690-4432-94c7-ac9e8838f235`}
           className="profile-image"
           alt="profile"
         />
