@@ -6,15 +6,15 @@ import "./DevDashboard.css";
 import { db, doc, getDoc } from "../firebase/index";
 
 export default function DevDashboard() {
-  const [userData, setUserData] = useState({});
   const [profile, setProfile] = useState("");
   const [name, setName] = useState("");
-  const [introduction, setIntroduction] = useState();
+  const [introduction, setIntroduction] = useState("");
   const [techStackString, setTechStackString] = useState("");
   const [techStacks, setTechStacks] = useState([]);
   const [devLinks, setDevLinks] = useState([]);
   const [linkTitle, setLinkTitle] = useState("");
   const [link, setLink] = useState("");
+  const [userEmail, setUserEmail] = useState("brijenmam@gmail.com");
 
   const removeDevLink = (deletedLinkId) => {
     setDevLinks(devLinks.filter((link) => link.id !== deletedLinkId));
@@ -65,7 +65,7 @@ export default function DevDashboard() {
       <div className="dev-container">
         {/* profile picture */}
         <img
-          src={"https://avatars.githubusercontent.com/u/96004700?v=4"}
+          src={`https://firebasestorage.googleapis.com/v0/b/devlink-35e6e.appspot.com/o/${userEmail}_devlink?alt=media&token=963a9020-1690-4432-94c7-ac9e8838f235`}
           className="profile-image"
           alt="profile"
         />

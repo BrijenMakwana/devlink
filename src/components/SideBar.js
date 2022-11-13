@@ -1,6 +1,6 @@
 import React from "react";
 import "./SideBar.css";
-import { app, db, collection, addDoc, doc, setDoc } from "../firebase/index";
+import { db, doc, setDoc, storage, ref, uploadBytes } from "../firebase/index";
 
 export default function SideBar(props) {
   const {
@@ -28,6 +28,7 @@ export default function SideBar(props) {
     }
   };
 
+  // publish data to firebase
   const publishData = async () => {
     if (
       name === "" ||
@@ -54,6 +55,7 @@ export default function SideBar(props) {
     }
   };
 
+  // add dev link to state
   const addDevLink = () => {
     if (linkTitle === "" || link === "") {
       alert("please fill in all the fields");
@@ -71,6 +73,17 @@ export default function SideBar(props) {
     }
   };
 
+  // upload profile image to firebase storage
+  const uploadProfileImage = (e) => {
+    setProfile(e.target.files[0]);
+    const imageRef = ref(storage, "brijenma@gmail.com_devlink");
+
+    // 'file' comes from the Blob or File API
+    uploadBytes(imageRef, profile).then((snapshot) => {
+      console.log("Uploaded a blob or file!");
+    });
+  };
+
   return (
     <div className="sidebar-container">
       {/* general settings */}
@@ -79,8 +92,9 @@ export default function SideBar(props) {
       <input
         type="file"
         className="input-file"
-        title="choose image"
-        onClick={(e) => setProfile(e.target.value)}
+        label="choose image"
+        accept=".jpg, .jpeg, .png"
+        onChange={(e) => uploadProfileImage(e)}
       />
 
       {/* name */}

@@ -31,13 +31,13 @@ export default function HomePage() {
       </div>
 
       {/* gif */}
-      <div className="video-demo-container">
+      {/* <div className="video-demo-container">
         <img
           src={require("../assets/images/a.gif")}
           alt="video"
           className="video-demo"
         />
-      </div>
+      </div> */}
     </div>
   );
 }
