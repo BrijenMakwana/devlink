@@ -65,15 +65,14 @@ export default function HomePage() {
       </h1>
 
       {/* email input */}
-      <div className="email-input-container">
-        <input
-          type="text"
-          placeholder="enter your email"
-          className="email-input"
+
+      <div className="git-btn-container" onClick={signInWithGithub}>
+        <img
+          src={require("../assets/images/github.png")}
+          className="btn-image"
+          alt="github"
         />
-        <div className="email-btn-container" onClick={signInWithGithub}>
-          <span className="email-btn-text">get login link</span>
-        </div>
+        <span className="git-btn-text">sign in</span>
       </div>
 
       {/* gif */}

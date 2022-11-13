@@ -1,6 +1,8 @@
 .main-container {
   display: flex;
   flex-direction: row;
+  min-height: 100vh;
+  background-image: linear-gradient(to right, #ffcaa6, #f86594);
 }
 
 .dev-container {
