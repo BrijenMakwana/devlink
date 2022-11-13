@@ -63,7 +63,9 @@ export default function SideBar(props) {
           devLinks: devLinks,
         });
         console.log("Document written with ID: ", docRef.id);
-        alert(`Your profile URL is: http://localhost:3000/${userEmail}`);
+        alert(
+          `Your profile URL is: https://devlink-page.vercel.app/${userEmail}`
+        );
       } catch (e) {
         console.error("Error adding document: ", e);
       }

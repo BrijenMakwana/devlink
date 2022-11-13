@@ -37,7 +37,7 @@
 
 .main-tagline {
   text-align: center;
-  font-size: 80px;
+  font-size: 4.5vw;
   margin-top: 100px;
   font-weight: bold;
   max-width: 1100px;
@@ -47,7 +47,6 @@
 
 .time-text {
   color: #f86594;
-  font-size: 90px;
 }
 
 .video-demo-container {
