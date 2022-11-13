@@ -8,11 +8,13 @@ import {
   ref,
   uploadBytes,
   auth,
+  signOut,
 } from "../firebase/index";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function SideBar(props) {
   const params = useParams();
+  const navigate = useNavigate();
 
   const {
     userEmail,
@@ -96,6 +98,18 @@ export default function SideBar(props) {
     });
   };
 
+  // logout
+  const logout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        navigate("/");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+
   return (
     <div className="sidebar-container">
       {/* general settings */}
@@ -163,6 +177,10 @@ export default function SideBar(props) {
 
       <div className="btn-container publish" onClick={publishData}>
         <span className="btn-text publish-text">publish</span>
+      </div>
+
+      <div className="btn-container publish" onClick={logout}>
+        <span className="btn-text publish-text">logout</span>
       </div>
     </div>
   );

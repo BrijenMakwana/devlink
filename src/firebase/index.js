@@ -13,6 +13,7 @@ import {
   GithubAuthProvider,
   signInWithPopup,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -47,4 +48,5 @@ export {
   auth,
   signInWithPopup,
   onAuthStateChanged,
+  signOut,
 };
