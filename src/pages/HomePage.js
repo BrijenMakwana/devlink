@@ -71,14 +71,16 @@ export default function HomePage() {
         <span className="git-btn-text">sign in</span>
       </div>
 
-      {/* gif */}
-      {/* <div className="video-demo-container">
-        <img
-          src={require("../assets/images/a.gif")}
-          alt="video"
-          className="video-demo"
-        />
-      </div> */}
+      {/* demo video */}
+      <div className="video-demo-container">
+        <video className="video-demo" autoPlay muted loop>
+          <source
+            src={require("../assets/videos/devlink.mp4")}
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
   );
 }

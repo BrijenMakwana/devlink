@@ -41,6 +41,12 @@ export default function SideBar(props) {
     }
   };
 
+  // empty stack stack
+  const emptyStackStack = () => {
+    setTechStacks([]);
+    setTechStackString("");
+  };
+
   // publish data to firebase
   const publishData = async () => {
     const user = auth.currentUser;
@@ -135,7 +141,7 @@ export default function SideBar(props) {
         value={name}
       />
 
-      {/* tel something about yourself */}
+      {/* tell something about yourself */}
       <textarea
         rows="2"
         cols="20"
@@ -156,6 +162,12 @@ export default function SideBar(props) {
         onKeyPress={splitTechStack}
         value={techStackString}
       ></textarea>
+
+      {/* remove tech stacks */}
+
+      <div className="btn-container add" onClick={emptyStackStack}>
+        <span className="btn-text add-text">empty it</span>
+      </div>
 
       {/* links */}
       <h2 className="sidebar-heading">links</h2>

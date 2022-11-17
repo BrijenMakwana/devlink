@@ -1,8 +1,8 @@
 .sidebar-container {
   background-color: #fff;
-  margin-top: 50px;
+  margin-top: 25px;
   width: 250px;
-  height: min-content;
+  height: fit-content;
   margin-left: 20px;
   border-radius: 15px;
   padding: 20px;
@@ -41,7 +41,7 @@
   text-align: center;
   padding: 10px;
   border-radius: 5px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .btn-container:hover {
@@ -57,7 +57,8 @@
 
 .add {
   background-color: #f86594;
-  width: 50px;
+  width: fit-content;
+  min-width: 50px;
   margin-left: auto;
 }
 
