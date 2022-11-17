@@ -12,13 +12,7 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
         setIsAllow(true);
-        // ...
-      } else {
-        // User is signed out
-        // ...
       }
     });
   }, []);
@@ -36,8 +30,6 @@ function App() {
         ) : (
           <>
             <Route path="/" element={<HomePage />} />
-            {/* <Route path="edit/:emailId" element={<NothingPage />} />
-            <Route path="edit" element={<NothingPage />} /> */}
             <Route path=":emailId" element={<DevLinkProfile />} />
             <Route path="*" element={<NothingPage />} />
           </>

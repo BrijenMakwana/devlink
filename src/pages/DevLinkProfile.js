@@ -28,7 +28,6 @@ export default function DevLinkProfile() {
       setTechStacks(docSnap.data().techStacks);
       setDevLinks(docSnap.data().devLinks);
     } else {
-      // doc.data() will be undefined in this case
       navigate("/");
     }
   };

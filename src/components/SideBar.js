@@ -34,6 +34,7 @@ export default function SideBar(props) {
     setDevLinks,
   } = props;
 
+  // split tech stack string to array
   const splitTechStack = (e) => {
     if (e.charCode === 44) {
       setTechStacks(techStackString.split(","));
@@ -56,18 +57,18 @@ export default function SideBar(props) {
       alert("please fill in all the fields");
     } else {
       try {
-        const docRef = setDoc(doc(db, userEmail, `${userEmail}_devlink`), {
+        setDoc(doc(db, userEmail, `${userEmail}_devlink`), {
           name: name,
           introduction: introduction,
           techStacks: techStacks,
           devLinks: devLinks,
         });
-        console.log("Document written with ID: ", docRef.id);
+
         alert(
           `Your profile URL is: https://devlink-page.vercel.app/${userEmail}`
         );
       } catch (e) {
-        console.error("Error adding document: ", e);
+        alert("Error publishing your profile, please try again!!");
       }
     }
   };
@@ -96,7 +97,7 @@ export default function SideBar(props) {
 
     // 'file' comes from the Blob or File API
     uploadBytes(imageRef, e.target.files[0]).then((snapshot) => {
-      console.log("Uploaded a blob or file!");
+      alert("Profile picture uploaded successfully");
     });
   };
 
@@ -150,7 +151,7 @@ export default function SideBar(props) {
         rows="4"
         cols="20"
         className="input text-area-input"
-        placeholder="e.g. react native, react, HTML, Javascript, ..."
+        placeholder="e.g. React Native, React, HTML, Javascript, ..."
         onChange={(e) => setTechStackString(e.target.value)}
         onKeyPress={splitTechStack}
         value={techStackString}
@@ -173,16 +174,21 @@ export default function SideBar(props) {
         value={link}
       />
 
+      {/* add link */}
+
       <div className="btn-container add" onClick={addDevLink}>
         <span className="btn-text add-text">add</span>
       </div>
 
-      <div className="btn-container publish" onClick={publishData}>
-        <span className="btn-text publish-text">publish</span>
+      {/* publish */}
+      <div className="btn-container solid" onClick={publishData}>
+        <span className="btn-text">publish</span>
       </div>
 
-      <div className="btn-container publish" onClick={logout}>
-        <span className="btn-text publish-text">logout</span>
+      {/* logout */}
+
+      <div className="btn-container outline" onClick={logout}>
+        <span className="btn-text">logout</span>
       </div>
     </div>
   );

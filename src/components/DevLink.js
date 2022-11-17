@@ -1,25 +1,25 @@
-import { useEffect } from "react";
 import "./DevLink.css";
-
-import deleteIcon from "../assets/images/delete.png";
 
 export default function DevLink(props) {
   const { title, link, removeDevLink = undefined, id, isRemovable } = props;
 
+  const linkTitle = title.toLowerCase();
+  // check for link icon
   const linkIcon =
-    title === "facebook" ||
-    title === "github" ||
-    title === "instagram" ||
-    title === "linkedin" ||
-    title === "twitter" ||
-    title === "youtube"
-      ? title
+    linkTitle === "facebook" ||
+    linkTitle === "github" ||
+    linkTitle === "instagram" ||
+    linkTitle === "linkedin" ||
+    linkTitle === "twitter" ||
+    linkTitle === "youtube"
+      ? linkTitle
       : "link";
 
   // todo: for others link, set link icon
   return (
     <div className="dev-link-container">
       <div className="link-container">
+        {/* title */}
         <a className="link-title" href={link} target="blank">
           {title}
         </a>
@@ -33,7 +33,7 @@ export default function DevLink(props) {
       {/* delete icon */}
       {isRemovable && (
         <img
-          src={deleteIcon}
+          src={require("../assets/images/delete.png")}
           alt="icon"
           className="link-icon delete"
           onClick={() => removeDevLink(id)}
