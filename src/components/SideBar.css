@@ -26,6 +26,7 @@
   background-color: #fff;
   margin-top: 5px;
   font-family: "Quicksand", sans-serif;
+  width: 200px;
 }
 
 .input:focus {
@@ -79,9 +80,13 @@
   .sidebar-container {
     order: 2;
     margin-top: 20px;
-    width: 300px;
+    width: 330px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 50px;
+  }
+
+  .input {
+    width: 250px;
   }
 }
